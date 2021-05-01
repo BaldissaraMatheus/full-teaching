@@ -262,9 +262,14 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit.jupiter.version}</version>
+			<version>5.0.0</version>
 			<scope>test</scope>
 		</dependency>
-
+<!--	https://intellij-support.jetbrains.com/hc/en-us/community/posts/360006399760-IDEA-2019-2-2-Ultimate-Edition-requires-junit-vintage-engine-for-Maven-package-using-only-JUnit5	-->
+		<dependency>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>
