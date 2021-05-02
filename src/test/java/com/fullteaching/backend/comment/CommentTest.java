@@ -54,7 +54,7 @@ public class CommentTest {
         Assertions.assertEquals(parentComment, comment.getCommentParent());
     }
 
-    @DisplayName("Quando o campo 'message' for inserida com um setter, então seu valor deve ser obtido pelo getter")
+    @DisplayName("Quando o campo 'message' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     public void testaSetEGetMessage() {
         Comment comment = new Comment("", 25, user);
@@ -62,7 +62,7 @@ public class CommentTest {
         Assertions.assertEquals("Qual doce é mais doce que o doce de batata doce?", comment.getMessage());
     }
 
-    @DisplayName("Quando o campo 'date' for inserida com um setter, então seu valor deve ser obtido pelo getter")
+    @DisplayName("Quando o campo 'date' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     public void testaSetEGetDate() {
         Comment comment = new Comment("", 25, user);
@@ -70,7 +70,7 @@ public class CommentTest {
         Assertions.assertEquals(12, comment.getDate());
     }
 
-    @DisplayName("Quando o campo 'user' for inserida com um setter, então seu valor deve ser obtido pelo getter")
+    @DisplayName("Quando o campo 'user' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     public void testaSetEGetUser() {
         Comment comment = new Comment("", 25, user);
@@ -79,7 +79,7 @@ public class CommentTest {
         Assertions.assertEquals(newUser, comment.getUser());
     }
 
-    @DisplayName("Quando o campo 'commentParent' for inserida com um setter, então seu valor deve ser obtido pelo getter")
+    @DisplayName("Quando o campo 'commentParent' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     public void testaSetEGetCommentParent() {
         User newUser = new User("Usuário", "123", "apelido", "batata.jpg", "");
@@ -90,7 +90,7 @@ public class CommentTest {
         Assertions.assertEquals(parentComment, childComment.getCommentParent());
     }
 
-    @DisplayName("Quando o campo 'replies' for inserida com um setter, então seu valor deve ser obtido pelo getter")
+    @DisplayName("Quando o campo 'replies' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     public void testaSetEGetReplies() {
         Comment originalComment = new Comment("", 5, user);
