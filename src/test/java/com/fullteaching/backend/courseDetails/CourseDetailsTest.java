@@ -9,6 +9,7 @@ import com.fullteaching.backend.user.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 
@@ -21,14 +22,14 @@ public class CourseDetailsTest {
         Assertions.assertTrue(courseDetails.getId() >= 0);
         Assertions.assertEquals(null, courseDetails.getCourse());
         Assertions.assertEquals(new ArrayList<>(), courseDetails.getFiles());
-        Assertions.assertEquals(new Forum(), courseDetails.getForum());
+        Assertions.assertEquals(null, courseDetails.getForum());
         Assertions.assertEquals("", courseDetails.getInfo());
     }
 
     @DisplayName("Quando o construtor for chamado com todos os parâmetros, então deve retornar uma instância de CourseDetails com os valores passados")
     @Test
     public void testaConstrutorPassandoParametros() {
-        User teacher = new User();
+        User teacher = Mockito.mock(User.class);
         Course course = new Course("Introdução a JUnit", "java.png", teacher);
 
         CourseDetails courseDetails = new CourseDetails(course);
@@ -36,7 +37,7 @@ public class CourseDetailsTest {
         Assertions.assertTrue(courseDetails.getId() >= 0);
         Assertions.assertEquals(course, courseDetails.getCourse());
         Assertions.assertEquals(new ArrayList<>(), courseDetails.getFiles());
-        Assertions.assertEquals(new Forum(), courseDetails.getForum());
+        Assertions.assertTrue(courseDetails.getForum() instanceof Forum);
         Assertions.assertEquals("", courseDetails.getInfo());
     }
 
@@ -51,7 +52,7 @@ public class CourseDetailsTest {
     @DisplayName("Quando o campo 'course' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     public void testaSetEGetCourse() {
-        User teacher = new User();
+        User teacher = Mockito.mock(User.class);
         Course course = new Course("Introdução a JUnit", "java.png", teacher);
         CourseDetails courseDetails = new CourseDetails();
         courseDetails.setCourse(course);
@@ -61,8 +62,8 @@ public class CourseDetailsTest {
     @DisplayName("Quando o campo 'files' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     public void testaSetEGetFiles() {
-        FileGroup fileGroupOne = new FileGroup("File Group 1");
-        FileGroup fileGroupTwo = new FileGroup("File Group 2");
+        FileGroup fileGroupOne = Mockito.mock(FileGroup.class);
+        FileGroup fileGroupTwo = Mockito.mock(FileGroup.class);
         ArrayList<FileGroup> files = new ArrayList<FileGroup>();
         files.add(fileGroupOne);
         files.add(fileGroupTwo);
@@ -74,7 +75,7 @@ public class CourseDetailsTest {
     @DisplayName("Quando o campo 'forum' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     public void testaSetEGetForum() {
-        Forum forum = new Forum(true);
+        Forum forum = Mockito.mock(Forum.class);
         CourseDetails courseDetails = new CourseDetails();
         courseDetails.setForum(forum);
         Assertions.assertEquals(forum, courseDetails.getForum());

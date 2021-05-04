@@ -4,9 +4,11 @@ import com.fullteaching.backend.comment.Comment;
 import com.fullteaching.backend.entry.Entry;
 import com.fullteaching.backend.file.File;
 import com.fullteaching.backend.filegroup.FileGroup;
+import com.fullteaching.backend.user.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 
@@ -54,8 +56,8 @@ class ForumTest {
     @DisplayName("Quando o campo 'entries' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     void getEntries() {
-        Entry entryOne = new Entry("primeira entry", 12, null);
-        Entry entryTwo = new Entry("segunda entry", 25, null);
+        Entry entryOne = Mockito.mock(Entry.class);
+        Entry entryTwo = Mockito.mock(Entry.class);
         ArrayList<Entry> entries = new ArrayList<Entry>();
         entries.add(entryOne);
         entries.add(entryTwo);
@@ -64,19 +66,18 @@ class ForumTest {
         forum.setEntries(entries);
 
         Assertions.assertEquals(entries, forum.getEntries());
-        Assertions.assertEquals(entryOne.getTitle(), forum.getEntries().get(0).getTitle());
-        Assertions.assertEquals(entryTwo.getTitle(), forum.getEntries().get(1).getTitle());
     }
 
     @DisplayName("Quando toString for chamado, então a mensagem resultante deve estar formatada corretamente")
     @Test
     void testToString() {
-        Comment comment = new Comment("Isso é um comentário", 13, null);
+        Comment comment = Mockito.mock(Comment.class);
         ArrayList<Comment> comments = new ArrayList<Comment>();
         comments.add(comment);
-        Entry entryOne = new Entry("primeira entry", 12, null);
+        Entry entryOne = Mockito.mock(Entry.class);
+        Mockito.when(entryOne.getComments()).thenReturn(comments);
         entryOne.setComments(comments);
-        Entry entryTwo = new Entry("segunda entry", 25, null);
+        Entry entryTwo = Mockito.mock(Entry.class);
         ArrayList<Entry> entries = new ArrayList<Entry>();
         entries.add(entryOne);
         entries.add(entryTwo);

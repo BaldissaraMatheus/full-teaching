@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 
@@ -16,8 +17,8 @@ public class CommentTest {
 
     @BeforeEach
     public void inicializa() {
-        user = new User();
-        user.setNickName("Zé");
+        user = Mockito.mock(User.class);
+        Mockito.when(user.getNickName()).thenReturn("Zé");
     }
 
     @DisplayName("Quando o chamar um construtor vazio, então deve retornar uma instância de Comment com todos os atributos iniciais")
@@ -37,8 +38,8 @@ public class CommentTest {
     @DisplayName("Quando o construtor for chamado com todos os parâmetros, então deve retornar uma instância de Comment com os valores passados")
     @Test
     public void testaConstrutor() {
-        User userOne = new User("Usuário 1", "123", "apelido", "batata.jpg", "");
-        Comment firstReplyUserOne = new Comment("primeira resposta do usuario 1", 15, userOne);
+        User userMock = Mockito.mock(User.class);
+        Comment firstReplyUserOne = new Comment("primeira resposta do usuario 1", 15, userMock);
         ArrayList<Comment> replies = new ArrayList<Comment>();
         replies.add(firstReplyUserOne);
 
@@ -74,17 +75,17 @@ public class CommentTest {
     @Test
     public void testaSetEGetUser() {
         Comment comment = new Comment("", 25, user);
-        User newUser = new User("Usuário", "123", "apelido", "batata.jpg", "");
-        comment.setUser(newUser);
-        Assertions.assertEquals(newUser, comment.getUser());
+        User userMock = Mockito.mock(User.class);
+        comment.setUser(userMock);
+        Assertions.assertEquals(userMock, comment.getUser());
     }
 
     @DisplayName("Quando o campo 'commentParent' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     public void testaSetEGetCommentParent() {
-        User newUser = new User("Usuário", "123", "apelido", "batata.jpg", "");
-        Comment childComment = new Comment("", 25, newUser);
-        childComment.setUser(newUser);
+        User userMock = Mockito.mock(User.class);
+        Comment childComment = new Comment("", 25, userMock);
+        childComment.setUser(userMock);
         Comment parentComment = new Comment("Este é o comentário pai", 25, user);
         childComment.setCommentParent(parentComment);
         Assertions.assertEquals(parentComment, childComment.getCommentParent());
@@ -95,8 +96,8 @@ public class CommentTest {
     public void testaSetEGetReplies() {
         Comment originalComment = new Comment("", 5, user);
 
-        User userOne = new User("Usuário 1", "123", "apelido", "batata.jpg", "");
-        User userTwo = new User("Usuário 2", "123", "apelido", "repolho.jpg", "");
+        User userOne = Mockito.mock(User.class);
+        User userTwo = Mockito.mock(User.class);
 
         Comment firstReplyUserOne = new Comment("primeira resposta do usuario 1", 15, userOne);
         Comment secondReplyUserOne = new Comment("segunda resposta do usuario 1", 19, userOne);
@@ -124,8 +125,8 @@ public class CommentTest {
     @DisplayName("Quando toString for chamado e user, commentParent e replies não forem nulos, a mensagem resultante deve estar formatada corretamente")
     @Test
     public void testaToString() {
-        User userOne = new User("Usuário 1", "123", "apelido", "batata.jpg", "");
-        Comment firstReplyUserOne = new Comment("primeira resposta do usuario 1", 15, userOne);
+        User replyUser = Mockito.mock(User.class);
+        Comment firstReplyUserOne = new Comment("primeira resposta do usuario 1", 15, replyUser);
         ArrayList<Comment> replies = new ArrayList<Comment>();
         replies.add(firstReplyUserOne);
 

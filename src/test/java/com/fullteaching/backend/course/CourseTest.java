@@ -7,6 +7,7 @@ import com.fullteaching.backend.user.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -29,7 +30,7 @@ public class CourseTest {
     @DisplayName("Quando o construtor for chamado com todos os parâmetros, então deve retornar uma instância de Course com os valores passados")
     @Test
     public void testaConstrutorPassandoParametros() {
-        User teacher = new User();
+        User teacher = Mockito.mock(User.class);
         CourseDetails courseDetails = new CourseDetails();
         Course course = new Course("Introdução a JUnit", "java.png", teacher, courseDetails);
         Assertions.assertTrue(course instanceof Course);
@@ -69,7 +70,7 @@ public class CourseTest {
     @DisplayName("Quando o campo 'teacher' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     public void testaSetEGetTeacher() {
-        User teacher = new User("Professor", "123", "zé", "fotinho.png", "");
+        User teacher = Mockito.mock(User.class);
         Course course = new Course();
         course.setTeacher(teacher);
         Assertions.assertEquals(teacher, course.getTeacher());
@@ -78,7 +79,7 @@ public class CourseTest {
     @DisplayName("Quando o campo 'couseDetails' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     public void testaSetEGetCourseDetails() {
-        CourseDetails courseDetails = new CourseDetails();
+        CourseDetails courseDetails = Mockito.mock(CourseDetails.class);
         Course course = new Course();
         course.setCourseDetails(courseDetails);
         Assertions.assertEquals(courseDetails, course.getCourseDetails());
@@ -87,8 +88,8 @@ public class CourseTest {
     @DisplayName("Quando o campo 'attenders' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     public void testaSetEGetAttenders() {
-        User attenderOne = new User("Atendente 1", "123", "Jão", "fotinho.png", "");
-        User attenderTwo = new User("Atendente 2", "senha-segura", "Zé", "fotopng", "");
+        User attenderOne = Mockito.mock(User.class);
+        User attenderTwo = Mockito.mock(User.class);
         HashSet<User> atendentes = new HashSet<User>();
         atendentes.add(attenderOne);
         atendentes.add(attenderTwo);
@@ -101,8 +102,8 @@ public class CourseTest {
     @Test
     public void testaSetEGetSessions() {
         Set<Session> sessions = new HashSet<Session>();
-        Session session1 = new Session("Sessão 1", "Esta é uma sessão", 12);
-        Session session2 = new Session("Sessão 2", "Esta é outra sessão", 24);
+        Session session1 = Mockito.mock(Session.class);
+        Session session2 = Mockito.mock(Session.class);
         sessions.add(session1);
         sessions.add(session2);
         Course course = new Course();
@@ -113,12 +114,13 @@ public class CourseTest {
     @DisplayName("Quando toString for chamado, então a mensagem resultante deve estar formatada corretamente")
     @Test
     public void testaToString() {
-        User teacher = new User("José", "123", "zé", "fotinho.png", "");
-        Session session1 = new Session("Sessão 1", "Esta é uma sessão", 12);
+        User teacher = Mockito.mock(User.class);
+        Mockito.when(teacher.getNickName()).thenReturn("Zé");
+        Session session1 = Mockito.mock(Session.class);
         Set<Session> sessions = new HashSet<Session>();
         sessions.add(session1);
-        User attenderOne = new User("Atendente 1", "123", "Jão", "fotinho.png", "");
-        User attenderTwo = new User("Atendente 2", "senha-segura", "Carlinhos", "foto.png", "");
+        User attenderOne = Mockito.mock(User.class);
+        User attenderTwo = Mockito.mock(User.class);
         HashSet<User> atendentes = new HashSet<User>();
         atendentes.add(attenderOne);
         atendentes.add(attenderTwo);
@@ -126,7 +128,7 @@ public class CourseTest {
         course.setSessions(sessions);
         course.setAttenders(atendentes);
         Assertions.assertEquals(
-                "Course[title: \"Introdução a JUnit\", teacher: \"zé\", #attenders: 2, #sessions: 1]",
+                "Course[title: \"Introdução a JUnit\", teacher: \"Zé\", #attenders: 2, #sessions: 1]",
                 course.toString()
         );
     }
@@ -149,7 +151,7 @@ public class CourseTest {
     @Test
     public void testaEqualsPassingDiffernteClass() {
         Course course = new Course();
-        Session session = new Session();
+        Session session = Mockito.mock(Session.class);
         course.setId(5);
         Assertions.assertEquals(false, course.equals(session));
     }

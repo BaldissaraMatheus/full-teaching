@@ -5,6 +5,7 @@ import com.fullteaching.backend.session.Session;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
@@ -105,7 +106,7 @@ class UserTest {
 
     @Test
     void getCourses() {
-        Course course = new Course();
+        Course course = Mockito.mock(Course.class);
         HashSet<Course> courses = new HashSet<>();
         courses.add(course);
         User user = new User();

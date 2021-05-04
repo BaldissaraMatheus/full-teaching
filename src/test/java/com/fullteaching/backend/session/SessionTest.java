@@ -3,9 +3,11 @@ package com.fullteaching.backend.session;
 import com.fullteaching.backend.course.Course;
 import com.fullteaching.backend.entry.Entry;
 import com.fullteaching.backend.forum.Forum;
+import com.fullteaching.backend.user.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 
@@ -40,7 +42,7 @@ class SessionTest {
     @DisplayName("Quando o construtor for chamado com quatro parâmetros, então deve retornar uma instância de Session com os valores passados")
     @Test
     public void testaConstrutorQuatroParametros() {
-        Course course = new Course();
+        Course course = Mockito.mock(Course.class);
         Session session = new Session("titulo", "descricao", 10, course);
         Assertions.assertTrue(session instanceof Session);
         Assertions.assertEquals(0, session.getId());
@@ -85,7 +87,7 @@ class SessionTest {
     @DisplayName("Quando o campo 'course' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     void getCourse() {
-        Course course = new Course();
+        Course course = Mockito.mock(Course.class);
         Session session = new Session();
         session.setCourse(course);
         Assertions.assertEquals(course, session.getCourse());
@@ -109,7 +111,7 @@ class SessionTest {
     @Test
     public void testaEqualsPassingDiffernteClass() {
         Session session = new Session();
-        Course course = new Course();
+        Course course = Mockito.mock(Course.class);
         Assertions.assertEquals(false, session.equals(course));
     }
 
@@ -138,6 +140,5 @@ class SessionTest {
                 "Session[title: \"titulo\", description: \"descricao\", date: \"11\"]",
                 session.toString()
         );
-//        return "Session[title: \"" + this.title + "\", description: \"" + this.description + "\", date: \"" + this.date + "\"]";
     }
 }

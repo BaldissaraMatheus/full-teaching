@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 
@@ -30,15 +31,13 @@ class EntryTest {
     @DisplayName("Quando o construtor for chamado com todos os parâmetros, então deve retornar uma instância de Entry com os valores passados")
     @Test
     void testaConstrutorPassandoParametros() {
-        User user = new User();
-        user.setNickName("Zé");
+        User user = Mockito.mock(User.class);
         Entry entry = new Entry("Isso é um título", 12, user);
         Assertions.assertTrue(entry instanceof Entry);
         Assertions.assertTrue(entry.getId() >= 0);
         Assertions.assertEquals("Isso é um título", entry.getTitle());
         Assertions.assertEquals(12, entry.getDate());
         Assertions.assertEquals(user, entry.getUser());
-        Assertions.assertEquals("Zé", entry.getUser().getNickName());
         Assertions.assertEquals(new ArrayList<Comment>(), entry.getComments());
     }
 
@@ -69,42 +68,33 @@ class EntryTest {
     @DisplayName("Quando o campo 'comments' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     void getComments() {
-        Comment firstComment = new Comment();
-        firstComment.setMessage("Primeiro comment");
-        Comment secondComment = new Comment();
-        secondComment.setMessage("Segundo comment");
+        Comment firstComment = Mockito.mock(Comment.class);
+        Comment secondComment = Mockito.mock(Comment.class);
         ArrayList<Comment> comments = new ArrayList<Comment>();
         comments.add(firstComment);
         comments.add(secondComment);
         Entry entry = new Entry();
         entry.setComments(comments);
         Assertions.assertEquals(comments, entry.getComments());
-        Assertions.assertEquals("Primeiro comment", entry.getComments().get(0).getMessage());
-        Assertions.assertNotEquals("Segundo comment", entry.getComments().get(0).getMessage());
-        Assertions.assertEquals("Segundo comment", entry.getComments().get(1).getMessage());
     }
 
     @DisplayName("Quando o campo 'user' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     void getUser() {
-        User user = new User();
-        user.setNickName("Zé");
+        User user = Mockito.mock(User.class);
         Entry entry = new Entry();
         entry.setUser(user);
         Assertions.assertEquals(user, entry.getUser());
-        Assertions.assertEquals("Zé", entry.getUser().getNickName());
     }
 
     @DisplayName("Quando toString for chamado, então a mensagem deve estar formatada corretamente")
     @Test
     void testToString() {
-        User user = new User();
-        user.setNickName("Zé");
+        User user = Mockito.mock(User.class);
+        Mockito.when(user.getNickName()).thenReturn("Zé");
 
-        Comment firstComment = new Comment();
-        firstComment.setMessage("Primeiro comment");
-        Comment secondComment = new Comment();
-        secondComment.setMessage("Segundo comment");
+        Comment firstComment = Mockito.mock(Comment.class);
+        Comment secondComment = Mockito.mock(Comment.class);
         ArrayList<Comment> comments = new ArrayList<Comment>();
         comments.add(firstComment);
         comments.add(secondComment);
