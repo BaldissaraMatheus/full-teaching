@@ -121,31 +121,6 @@ public class FileTest {
         Assertions.assertEquals("png", file.getFileExtension());
     }
 
-    @DisplayName("Quando passado para o método equals o valor null, então deve retornar false")
-    @Test
-    public void testaEqualsPassingNull() {
-        File file = new File();
-        file.setId(5);
-        Assertions.assertEquals(false, file.equals(null));
-    }
-
-    @DisplayName("Quando passado para o método equals o mesmo objeto, então deve retornar true")
-    @Test
-    public void testaEqualsPassingThis() {
-        File file = new File();
-        file.setId(5);
-        Assertions.assertEquals(true, file.equals(file));
-    }
-
-    @DisplayName("Quando passado para o método equals a instancia de uma classe diferente, então deve retornar false")
-    @Test
-    public void testaEqualsPassingDiffernteClass() {
-        File file = new File();
-        file.setId(5);
-        Session session = new Session();
-        Assertions.assertEquals(false, file.equals(session));
-    }
-
     @DisplayName("Quando passado para o método equals a instancias diferentes com o mesmo id, então deve retornar true")
     @Test
     public void testaEqualsPassingDifferentObjectWithSameId() {
