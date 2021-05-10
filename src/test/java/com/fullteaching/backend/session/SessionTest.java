@@ -1,19 +1,12 @@
 package com.fullteaching.backend.session;
 
 import com.fullteaching.backend.course.Course;
-import com.fullteaching.backend.entry.Entry;
-import com.fullteaching.backend.forum.Forum;
-import com.fullteaching.backend.user.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.mockito.Mockito;
 
-import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-class SessionTest {
+public class SessionTest {
 
     @DisplayName("Quando o chamar um construtor vazio, então deve retornar uma instância de Session com todos os atributos iniciais")
     @Test
@@ -54,7 +47,7 @@ class SessionTest {
 
     @DisplayName("Quando o campo 'id' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getId() {
+    public void getId() {
         Session session = new Session();
         session.setId(23);
         Assertions.assertEquals(23, session.getId());
@@ -62,7 +55,7 @@ class SessionTest {
 
     @DisplayName("Quando o campo 'title' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getTitle() {
+    public void getTitle() {
         Session session = new Session();
         session.setTitle("titulo");
         Assertions.assertEquals("titulo", session.getTitle());
@@ -70,7 +63,7 @@ class SessionTest {
 
     @DisplayName("Quando o campo 'description' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getDescription() {
+    public void getDescription() {
         Session session = new Session();
         session.setDescription("descricao");
         Assertions.assertEquals("descricao", session.getDescription());
@@ -78,7 +71,7 @@ class SessionTest {
 
     @DisplayName("Quando o campo 'date' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getDate() {
+    public void getDate() {
         Session session = new Session();
         session.setDate(13);
         Assertions.assertEquals(13, session.getDate());
@@ -86,7 +79,7 @@ class SessionTest {
 
     @DisplayName("Quando o campo 'course' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getCourse() {
+    public void getCourse() {
         Course course = Mockito.mock(Course.class);
         Session session = new Session();
         session.setCourse(course);
@@ -131,7 +124,7 @@ class SessionTest {
 
     @DisplayName("Quando toString for chamado, então a mensagem resultante deve estar formatada corretamente")
     @Test
-    void testToString() {
+    public void testToString() {
         Session session = new Session();
         session.setTitle("titulo");
         session.setDescription("descricao");

@@ -4,12 +4,12 @@ import com.fullteaching.backend.file.File;
 import com.fullteaching.backend.session.Session;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
 
-class FileGroupTest {
+public class FileGroupTest {
 
     @DisplayName("Quando o chamar um construtor vazio, então deve retornar uma instância de FileGroup com todos os atributos iniciais")
     @Test
@@ -50,7 +50,7 @@ class FileGroupTest {
 
     @DisplayName("Quando o campo 'id' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getId() {
+    public void getId() {
         FileGroup fg = new FileGroup();
         fg.setId(222);
         Assertions.assertEquals(222, fg.getId());
@@ -58,7 +58,7 @@ class FileGroupTest {
 
     @DisplayName("Quando o campo 'title' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getTitle() {
+    public void getTitle() {
         FileGroup fg = new FileGroup();
         fg.setTitle("titulo");
         Assertions.assertEquals("titulo", fg.getTitle());
@@ -66,7 +66,7 @@ class FileGroupTest {
 
     @DisplayName("Quando o campo 'files' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getFiles() {
+    public void getFiles() {
         FileGroup fg = new FileGroup();
         File fileOne = Mockito.mock(File.class);
         File fileTwo = Mockito.mock(File.class);
@@ -81,7 +81,7 @@ class FileGroupTest {
 
     @DisplayName("Quando o campo 'fileGroups' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getFileGroups() {
+    public void getFileGroups() {
         FileGroup fg = new FileGroup();
 
         FileGroup fgOne = new FileGroup("Primeiro fileGroup");
@@ -97,7 +97,7 @@ class FileGroupTest {
 
     @DisplayName("Quando o campo 'fileGroupParent' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getFileGroupParent() {
+    public void getFileGroupParent() {
         FileGroup fg = new FileGroup();
         FileGroup fgParent = new FileGroup("fileGroup parent");
 
@@ -132,28 +132,9 @@ class FileGroupTest {
         Assertions.assertEquals(false, fg.equals(session));
     }
 
-    @DisplayName("Quando chamar o método updateIndexOrder, então o indexOrder dos files deve ser resetado")
-    @Test
-    void updateFileIndexOrder() {
-        FileGroup fg = new FileGroup();
-        File fileOne = Mockito.mock(File.class);
-        fileOne.setIndexOrder(25);
-        File fileTwo = Mockito.mock(File.class);
-        fileTwo.setIndexOrder(37);
-        ArrayList<File> files = new ArrayList<File>();
-        files.add(fileOne);
-        files.add(fileTwo);
-        fg.setFiles(files);
-
-        fg.updateFileIndexOrder();
-
-        Assertions.assertEquals(0,  fg.getFiles().get(0).getIndexOrder());
-        Assertions.assertEquals(1,  fg.getFiles().get(1).getIndexOrder());
-    }
-
     @DisplayName("Quando toString for chamado, então a mensagem resultante deve estar formatada corretamente")
     @Test
-    void testToString() {
+    public void testToString() {
         File fileOne = Mockito.mock(File.class);
         File fileTwo = Mockito.mock(File.class);
         ArrayList<File> files = new ArrayList<File>();

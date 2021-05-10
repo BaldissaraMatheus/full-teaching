@@ -5,7 +5,7 @@ import com.fullteaching.backend.user.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
@@ -18,7 +18,6 @@ public class CommentTest {
     @BeforeEach
     public void inicializa() {
         user = Mockito.mock(User.class);
-        Mockito.when(user.getNickName()).thenReturn("Zé");
     }
 
     @DisplayName("Quando o chamar um construtor vazio, então deve retornar uma instância de Comment com todos os atributos iniciais")
@@ -125,6 +124,8 @@ public class CommentTest {
     @DisplayName("Quando toString for chamado e user, commentParent e replies não forem nulos, a mensagem resultante deve estar formatada corretamente")
     @Test
     public void testaToString() {
+        user = Mockito.mock(User.class); // sem essa linha o build dá failed
+        Mockito.when(user.getNickName()).thenReturn("Zé");
         User replyUser = Mockito.mock(User.class);
         Comment firstReplyUserOne = new Comment("primeira resposta do usuario 1", 15, replyUser);
         ArrayList<Comment> replies = new ArrayList<Comment>();

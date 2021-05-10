@@ -2,19 +2,14 @@ package com.fullteaching.backend.forum;
 
 import com.fullteaching.backend.comment.Comment;
 import com.fullteaching.backend.entry.Entry;
-import com.fullteaching.backend.file.File;
-import com.fullteaching.backend.filegroup.FileGroup;
-import com.fullteaching.backend.user.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class ForumTest {
+public class ForumTest {
 
     @DisplayName("Quando o chamar um construtor vazio, então deve retornar uma instância de Forum com todos os atributos iniciais")
     @Test
@@ -39,7 +34,7 @@ class ForumTest {
 
     @DisplayName("Quando o campo 'id' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getId() {
+    public void getId() {
         Forum forum = new Forum(true);
         forum.setId(25);
         Assertions.assertEquals(25, forum.getId());
@@ -47,7 +42,7 @@ class ForumTest {
 
     @DisplayName("Quando o campo 'activated' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void isActivated() {
+    public void isActivated() {
         Forum forum = new Forum(true);
         forum.setActivated(false);
         Assertions.assertEquals(false, forum.isActivated());
@@ -55,7 +50,7 @@ class ForumTest {
 
     @DisplayName("Quando o campo 'entries' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getEntries() {
+    public void getEntries() {
         Entry entryOne = Mockito.mock(Entry.class);
         Entry entryTwo = Mockito.mock(Entry.class);
         ArrayList<Entry> entries = new ArrayList<Entry>();
@@ -70,7 +65,7 @@ class ForumTest {
 
     @DisplayName("Quando toString for chamado, então a mensagem resultante deve estar formatada corretamente")
     @Test
-    void testToString() {
+    public void testToString() {
         Comment comment = Mockito.mock(Comment.class);
         ArrayList<Comment> comments = new ArrayList<Comment>();
         comments.add(comment);

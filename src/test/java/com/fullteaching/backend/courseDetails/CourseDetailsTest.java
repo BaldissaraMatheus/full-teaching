@@ -8,12 +8,13 @@ import com.fullteaching.backend.user.User;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
 
 public class CourseDetailsTest {
+
     @DisplayName("Quando o chamar um construtor vazio, então deve retornar uma instância de CourseDetails com todos os atributos iniciais")
     @Test
     public void testaConstrutorVazio() {
@@ -22,7 +23,7 @@ public class CourseDetailsTest {
         Assertions.assertTrue(courseDetails.getId() >= 0);
         Assertions.assertEquals(null, courseDetails.getCourse());
         Assertions.assertEquals(new ArrayList<>(), courseDetails.getFiles());
-        Assertions.assertEquals(null, courseDetails.getForum());
+        Assertions.assertEquals("Forum[activated: \"false\", #entries: \"0\", #comments: \"0\"]", courseDetails.getForum().toString().trim());
         Assertions.assertEquals("", courseDetails.getInfo());
     }
 

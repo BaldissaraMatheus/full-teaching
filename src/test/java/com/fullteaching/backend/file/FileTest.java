@@ -1,17 +1,11 @@
 package com.fullteaching.backend.file;
 
-import com.fullteaching.backend.comment.Comment;
-import com.fullteaching.backend.course.Course;
 import com.fullteaching.backend.session.Session;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.springframework.test.util.ReflectionTestUtils;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class FileTest {
+public class FileTest {
 
     @DisplayName("Quando o chamar um construtor vazio, então deve retornar uma instância de File com todos os atributos iniciais")
     @Test
@@ -81,7 +75,7 @@ class FileTest {
 
     @DisplayName("Quando o campo 'type' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getType() {
+    public void getType() {
         File file = new File();
         file.setType(0);
         Assertions.assertEquals(0, file.getType());
@@ -89,7 +83,7 @@ class FileTest {
 
     @DisplayName("Quando o campo 'name' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getName() {
+    public void getName() {
         File file = new File();
         file.setName("arquivo.jpg");
         Assertions.assertEquals("arquivo.jpg", file.getName());
@@ -97,7 +91,7 @@ class FileTest {
 
     @DisplayName("Quando o campo 'nameIdent' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getNameIdent() {
+    public void getNameIdent() {
         File file = new File();
         file.setNameIdent("isso é um ident");
         Assertions.assertEquals("isso é um ident", file.getNameIdent());
@@ -105,7 +99,7 @@ class FileTest {
 
     @DisplayName("Quando o campo 'link' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getLink() {
+    public void getLink() {
         File file = new File();
         file.setLink("https://google.com/images/arquivo.png");
         Assertions.assertEquals("https://google.com/images/arquivo.png", file.getLink());
@@ -113,7 +107,7 @@ class FileTest {
 
     @DisplayName("Quando o campo 'indexOrder' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getIndexOrder() {
+    public void getIndexOrder() {
         File file = new File();
         file.setIndexOrder(22);
         Assertions.assertEquals(22, file.getIndexOrder());
@@ -121,7 +115,7 @@ class FileTest {
 
     @DisplayName("Quando o campo 'name' for inserido com um setter, então o getFileExtension deve retornar o conteúdo depois do . do valor inserido")
     @Test
-    void getFileExtension() {
+    public void getFileExtension() {
         File file = new File();
         file.setNameIdent("foto.png");
         Assertions.assertEquals("png", file.getFileExtension());
@@ -164,7 +158,7 @@ class FileTest {
 
     @DisplayName("Quando toString for chamado, então a mensagem resultante deve estar formatada corretamente")
     @Test
-    void testToString() {
+    public void testToString() {
         File file = new File(0, "arquivo.png", "https://google.com/images/arquivo.png", 2);
         file.setNameIdent("arquivo-ident.png");
         Assertions.assertEquals(

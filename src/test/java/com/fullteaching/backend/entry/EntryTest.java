@@ -1,24 +1,19 @@
 package com.fullteaching.backend.entry;
 
 import com.fullteaching.backend.comment.Comment;
-import com.fullteaching.backend.coursedetails.CourseDetails;
-import com.fullteaching.backend.forum.Forum;
 import com.fullteaching.backend.user.User;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class EntryTest {
+public class EntryTest {
 
     @DisplayName("Quando o chamar um construtor vazio, então deve retornar uma instância de Entry com todos os atributos iniciais")
     @Test
-    void testaConstrutorVazio() {
+    public void testaConstrutorVazio() {
         Entry entry = new Entry();
         Assertions.assertTrue(entry instanceof Entry);
         Assertions.assertTrue(entry.getId() >= 0);
@@ -30,7 +25,7 @@ class EntryTest {
 
     @DisplayName("Quando o construtor for chamado com todos os parâmetros, então deve retornar uma instância de Entry com os valores passados")
     @Test
-    void testaConstrutorPassandoParametros() {
+    public void testaConstrutorPassandoParametros() {
         User user = Mockito.mock(User.class);
         Entry entry = new Entry("Isso é um título", 12, user);
         Assertions.assertTrue(entry instanceof Entry);
@@ -43,7 +38,7 @@ class EntryTest {
 
     @DisplayName("Quando o campo 'id' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void testaSetEGetId() {
+    public void testaSetEGetId() {
         Entry entry = new Entry();
         entry.setId(222);
         Assertions.assertEquals(222, entry.getId());
@@ -51,7 +46,7 @@ class EntryTest {
 
     @DisplayName("Quando o campo 'title' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getTitle() {
+    public void getTitle() {
         Entry entry = new Entry();
         entry.setTitle("Isso é um título");
         Assertions.assertEquals("Isso é um título", entry.getTitle());
@@ -59,7 +54,7 @@ class EntryTest {
 
     @DisplayName("Quando o campo 'date' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getDate() {
+    public void getDate() {
         Entry entry = new Entry();
         entry.setDate(12);
         Assertions.assertEquals(12, entry.getDate());
@@ -67,7 +62,7 @@ class EntryTest {
 
     @DisplayName("Quando o campo 'comments' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getComments() {
+    public void getComments() {
         Comment firstComment = Mockito.mock(Comment.class);
         Comment secondComment = Mockito.mock(Comment.class);
         ArrayList<Comment> comments = new ArrayList<Comment>();
@@ -80,7 +75,7 @@ class EntryTest {
 
     @DisplayName("Quando o campo 'user' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getUser() {
+    public void getUser() {
         User user = Mockito.mock(User.class);
         Entry entry = new Entry();
         entry.setUser(user);
@@ -89,7 +84,7 @@ class EntryTest {
 
     @DisplayName("Quando toString for chamado, então a mensagem deve estar formatada corretamente")
     @Test
-    void testToString() {
+    public void testToString() {
         User user = Mockito.mock(User.class);
         Mockito.when(user.getNickName()).thenReturn("Zé");
 

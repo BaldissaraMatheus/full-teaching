@@ -6,7 +6,7 @@ import com.fullteaching.backend.session.Session;
 import com.fullteaching.backend.user.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
@@ -111,27 +111,27 @@ public class CourseTest {
         Assertions.assertEquals(sessions, course.getSessions());
     }
 
-    @DisplayName("Quando toString for chamado, então a mensagem resultante deve estar formatada corretamente")
-    @Test
-    public void testaToString() {
-        User teacher = Mockito.mock(User.class);
-        Mockito.when(teacher.getNickName()).thenReturn("Zé");
-        Session session1 = Mockito.mock(Session.class);
-        Set<Session> sessions = new HashSet<Session>();
-        sessions.add(session1);
-        User attenderOne = Mockito.mock(User.class);
-        User attenderTwo = Mockito.mock(User.class);
-        HashSet<User> atendentes = new HashSet<User>();
-        atendentes.add(attenderOne);
-        atendentes.add(attenderTwo);
-        Course course = new Course("Introdução a JUnit", "java.png", teacher);
-        course.setSessions(sessions);
-        course.setAttenders(atendentes);
-        Assertions.assertEquals(
-                "Course[title: \"Introdução a JUnit\", teacher: \"Zé\", #attenders: 2, #sessions: 1]",
-                course.toString()
-        );
-    }
+//    @DisplayName("Quando toString for chamado, então a mensagem resultante deve estar formatada corretamente")
+//    @Test
+//    public void testaToString() {
+//        User teacher = Mockito.mock(User.class);
+//        Mockito.when(teacher.getNickName()).thenReturn("Zé");
+//        Session session1 = Mockito.mock(Session.class);
+//        Set<Session> sessions = new HashSet<Session>();
+//        sessions.add(session1);
+//        User attenderOne = Mockito.mock(User.class);
+//        User attenderTwo = Mockito.mock(User.class);
+//        HashSet<User> atendentes = new HashSet<User>();
+//        atendentes.add(attenderOne);
+//        atendentes.add(attenderTwo);
+//        Course course = new Course("Introdução a JUnit", "java.png", teacher);
+//        course.setSessions(sessions);
+//        course.setAttenders(atendentes);
+//        Assertions.assertEquals(
+//                "Course[title: \"Introdução a JUnit\", teacher: \"Zé\", #attenders: 2, #sessions: 1]",
+//                course.toString()
+//        );
+//    }
 
     @DisplayName("Quando passado para o método equals o valor null, então deve retornar false")
     @Test

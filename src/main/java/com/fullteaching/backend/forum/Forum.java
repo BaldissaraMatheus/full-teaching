@@ -59,12 +59,16 @@ public class Forum {
 	@Override
 	public String toString() {
 		int numberOfComments = 0;
+		int numberOfEntries = 0;
 		if (this.entries != null) {
+			numberOfEntries = this.entries.size();
 			for (Entry entry: this.entries) {
-				numberOfComments += entry.getComments().size();
+				if (entry.getComments() != null) {
+					numberOfComments += entry.getComments().size();
+				}
 			}
 		}
-		return "Forum[activated: \"" + this.activated + "\", #entries: \"" + this.entries.size() + "\", #comments: \"" + numberOfComments + "\"]";
+		return "Forum[activated: \"" + this.activated + "\", #entries: \"" + numberOfEntries + "\", #comments: \"" + numberOfComments + "\"]";
 	}
 
 }
