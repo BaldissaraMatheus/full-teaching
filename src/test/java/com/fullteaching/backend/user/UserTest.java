@@ -1,20 +1,15 @@
 package com.fullteaching.backend.user;
 
 import com.fullteaching.backend.course.Course;
-import com.fullteaching.backend.session.Session;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.mockito.Mockito;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class UserTest {
+public class UserTest {
 
     @DisplayName("Quando o chamar um construtor vazio, então deve retornar uma instância de User com todos os atributos iniciais")
     @Test
@@ -50,7 +45,7 @@ class UserTest {
 
     @DisplayName("Quando o campo 'id' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getId() {
+    public void getId() {
         User user = new User();
         user.setId(25L);
         Assertions.assertEquals(25L, user.getId());
@@ -58,7 +53,7 @@ class UserTest {
 
     @DisplayName("Quando o campo 'name' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getName() {
+    public void getName() {
         User user = new User();
         user.setName("João");
         Assertions.assertEquals("João", user.getName());
@@ -66,7 +61,7 @@ class UserTest {
 
     @DisplayName("Quando o campo 'passwordHash' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getPasswordHash() {
+    public void getPasswordHash() {
         User user = new User();
         user.setPasswordHash("isso-eh-um-hash");
         Assertions.assertEquals("isso-eh-um-hash", user.getPasswordHash());
@@ -74,7 +69,7 @@ class UserTest {
 
     @DisplayName("Quando o campo 'admin' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getRoles() {
+    public void getRoles() {
         ArrayList<String> roles = new ArrayList<String>();
         String role = "admin";
         roles.add(role);
@@ -88,7 +83,7 @@ class UserTest {
 
     @DisplayName("Quando o campo 'nickname' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getNickName() {
+    public void getNickName() {
         User user = new User();
         user.setNickName("apelido");
         Assertions.assertEquals("apelido", user.getNickName());
@@ -96,14 +91,14 @@ class UserTest {
 
     @DisplayName("Quando o campo 'picture' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getPicture() {
+    public void getPicture() {
         User user = new User();
         user.setPicture("foto.png");
         Assertions.assertEquals("foto.png", user.getPicture());
     }
 
     @Test
-    void getRegistrationDate() {
+    public void getRegistrationDate() {
         User user = new User();
         Long rd = System.currentTimeMillis();
         user.setRegistrationDate(rd);
@@ -112,7 +107,7 @@ class UserTest {
 
     @DisplayName("Quando o campo 'courses' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
-    void getCourses() {
+    public void getCourses() {
         Course course = Mockito.mock(Course.class);
         HashSet<Course> courses = new HashSet<>();
         courses.add(course);
@@ -124,7 +119,7 @@ class UserTest {
 
     @DisplayName("Quando o campo 'nbane' for inserido com um setter, então deve ser gerado o hashCode corretamente")
     @Test
-    void testHashCode() {
+    public void testHashCode() {
         User user = new User("Nome", "senha123", "apelido", "foto.png");
         int hash = "Nome".hashCode();
         Assertions.assertEquals(hash, user.hashCode());
@@ -154,7 +149,7 @@ class UserTest {
 
     @DisplayName("Quando toString for chamado, então a mensagem resultante deve estar formatada corretamente")
     @Test
-    void testToString() {
+    public void testToString() {
         User user = new User();
         user.setNickName("apelido");
         Assertions.assertEquals("apelido", user.toString());
