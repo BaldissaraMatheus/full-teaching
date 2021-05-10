@@ -86,6 +86,28 @@ public class SessionTest {
         Assertions.assertEquals(course, session.getCourse());
     }
 
+    @DisplayName("Quando passado para o método equals o valor null, então deve retornar false")
+    @Test
+    public void testaEqualsPassingNull() {
+        Session session = new Session();
+        Assertions.assertEquals(false, session.equals(null));
+    }
+
+    @DisplayName("Quando passado para o método equals a mesma instância, então deve retornar true")
+    @Test
+    public void testaEqualsPassingThis() {
+        Session session = new Session();
+        Assertions.assertEquals(true, session.equals(session));
+    }
+
+    @DisplayName("Quando passado para o método equals a instancia de uma classe diferente, então deve retornar false")
+    @Test
+    public void testaEqualsPassingDiffernteClass() {
+        Session session = new Session();
+        Course course = Mockito.mock(Course.class);
+        Assertions.assertEquals(false, session.equals(course));
+    }
+
     @DisplayName("Quando passado para o método equals a instancias diferentes com o mesmo id, então deve retornar true")
     @Test
     public void testaEqualsPassingDifferentObjectWithSameId() {

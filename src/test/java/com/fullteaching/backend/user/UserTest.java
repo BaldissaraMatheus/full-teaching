@@ -137,6 +137,21 @@ class UserTest {
         Assertions.assertEquals(false, user.equals(null));
     }
 
+    @DisplayName("Quando passado para o método equals a mesma instância, então deve retornar true")
+    @Test
+    public void testaEqualsPassingThis() {
+        User user = new User();
+        Assertions.assertEquals(true,  user.equals(user));
+    }
+
+    @DisplayName("Quando passado para o método equals a instancia de uma classe diferente, então deve retornar false")
+    @Test
+    public void testaEqualsPassingDiffernteClass() {
+        User user = new User();
+        Course course = new Course();
+        Assertions.assertEquals(false, user.equals(course));
+    }
+
     @DisplayName("Quando toString for chamado, então a mensagem resultante deve estar formatada corretamente")
     @Test
     void testToString() {

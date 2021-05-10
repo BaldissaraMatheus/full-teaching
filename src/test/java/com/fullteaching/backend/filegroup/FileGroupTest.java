@@ -107,6 +107,22 @@ public class FileGroupTest {
         Assertions.assertEquals(fgParent.getTitle(), fg.getFileGroupParent().getTitle());
     }
 
+    @DisplayName("Quando passado para o método equals o valor null, então deve retornar false")
+    @Test
+    public void testaEqualsPassingNull() {
+        FileGroup fg = new FileGroup();
+        fg.setId(5);
+        Assertions.assertEquals(false, fg.equals(null));
+    }
+
+    @DisplayName("Quando passado para o método equals o mesmo objeto, então deve retornar true")
+    @Test
+    public void testaEqualsPassingThis() {
+        FileGroup fg = new FileGroup();
+        fg.setId(5);
+        Assertions.assertEquals(true, fg.equals(fg));
+    }
+
     @DisplayName("Quando passado para o método equals a instancia de uma classe diferente, então deve retornar false")
     @Test
     public void testaEqualsPassingDiffernteClass() {
