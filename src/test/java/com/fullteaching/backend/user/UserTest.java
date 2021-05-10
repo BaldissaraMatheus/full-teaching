@@ -48,6 +48,7 @@ class UserTest {
         Assertions.assertEquals(roles, user.getRoles());
     }
 
+    @DisplayName("Quando o campo 'id' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     void getId() {
         User user = new User();
@@ -55,6 +56,7 @@ class UserTest {
         Assertions.assertEquals(25L, user.getId());
     }
 
+    @DisplayName("Quando o campo 'name' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     void getName() {
         User user = new User();
@@ -62,6 +64,7 @@ class UserTest {
         Assertions.assertEquals("João", user.getName());
     }
 
+    @DisplayName("Quando o campo 'passwordHash' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     void getPasswordHash() {
         User user = new User();
@@ -69,6 +72,7 @@ class UserTest {
         Assertions.assertEquals("isso-eh-um-hash", user.getPasswordHash());
     }
 
+    @DisplayName("Quando o campo 'admin' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     void getRoles() {
         ArrayList<String> roles = new ArrayList<String>();
@@ -82,6 +86,7 @@ class UserTest {
 
     }
 
+    @DisplayName("Quando o campo 'nickname' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     void getNickName() {
         User user = new User();
@@ -89,6 +94,7 @@ class UserTest {
         Assertions.assertEquals("apelido", user.getNickName());
     }
 
+    @DisplayName("Quando o campo 'picture' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     void getPicture() {
         User user = new User();
@@ -104,6 +110,7 @@ class UserTest {
         Assertions.assertEquals(rd, user.getRegistrationDate());
     }
 
+    @DisplayName("Quando o campo 'courses' for inserido com um setter, então seu valor deve ser obtido pelo getter")
     @Test
     void getCourses() {
         Course course = Mockito.mock(Course.class);
@@ -115,6 +122,7 @@ class UserTest {
         Assertions.assertTrue(user.getCourses().contains(course));
     }
 
+    @DisplayName("Quando o campo 'nbane' for inserido com um setter, então deve ser gerado o hashCode corretamente")
     @Test
     void testHashCode() {
         User user = new User("Nome", "senha123", "apelido", "foto.png");
